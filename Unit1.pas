@@ -47,6 +47,9 @@ type
     btBtnCopiaRG: TBitBtn;
     btBtnCopiaTitEleitor: TBitBtn;
     lblNaturalidade: TLabel;
+    lblMatricula: TLabel;
+    edtMatricula: TEdit;
+    btBtnCopiaMatricula: TBitBtn;
     procedure Click(Sender: TObject);
     procedure btBtnCopiaNascimentoClick(Sender: TObject);
     procedure btBtnCopiaNomeMaeClick(Sender: TObject);
@@ -58,6 +61,7 @@ type
     procedure btBtnCopiaTitEleitorClick(Sender: TObject);
     procedure btBtnSairClick(Sender: TObject);
     procedure btBtnGerarClick(Sender: TObject);
+    procedure btBtnCopiaMatriculaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -492,11 +496,51 @@ function gerarDDD(): string;
     Result := ddd[uf];
   end;
 
+function gerarMatricula(): string;
+  var
+    n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,n17 : LongInt;
+    I: Integer;
+  begin
+    I :=0;
+    while I=0 do
+    begin
+      n1  := Trunc(Random(10));
+      n2  := Trunc(Random(10));
+      n3  := Trunc(Random(10));
+      n4  := Trunc(Random(10));
+      n5  := Trunc(Random(10));
+      n6  := Trunc(Random(10));
+      n7  := Trunc(Random(10));
+      n8  := Trunc(Random(10));
+      n9  := Trunc(Random(10));
+      n10 := Trunc(Random(10));
+      n11 := Trunc(Random(10));
+      n12 := Trunc(Random(10));
+      n13 := Trunc(Random(10));
+      n14 := Trunc(Random(10));
+      n15 := Trunc(Random(10));
+      n16 := Trunc(Random(10));
+      n17 := Trunc(Random(10));
+
+      begin
+        I := 1;
+        Result := IntToStr(n1) + IntToStr(n2) + IntToStr(n3) + IntToStr(n4) + IntToStr(n5) +
+        IntToStr(n6) + IntToStr(n7) + IntToStr(n8) + IntToStr(n9) + IntToStr(n10)+
+        IntToStr(n11)+ IntToStr(n12)+ IntToStr(n13)+ IntToStr(n14)+ IntToStr(n15)+ IntToStr(n16)+ IntToStr(n17);
+      end;
+    end
+  end;
+
 
 procedure TForm1.btBtnGerarClick(Sender: TObject);
   begin
     if geradorCPF (True) <> '' then
       begin
+       { case rdgpSexo.ItemIndex of
+           0 : edtNomeCompleto.Text := gerarNomeMasculino();
+           1 :
+           2 :
+        end; }
         if rdgpSexo.ItemIndex=0 then
           begin
             edtCPF.Text       := geradorCPF(True);
@@ -509,6 +553,7 @@ procedure TForm1.btBtnGerarClick(Sender: TObject);
             edtTelefone.Text  := gerarTelefone();
             edtUF.Text        := gerarUF();
             edtDDD.Text       := gerarDDD();
+            edtMatricula.Text      := gerarMatricula();
           end;
         if rdgpSexo.ItemIndex=1 then
           begin
@@ -522,6 +567,7 @@ procedure TForm1.btBtnGerarClick(Sender: TObject);
               edtTelefone.Text  := gerarTelefone();
               edtUF.Text        := gerarUF();
               edtDDD.Text       := gerarDDD();
+              edtMatricula.Text      := gerarMatricula();
           end;
         if rdgpSexo.ItemIndex=2 then
           begin
@@ -535,6 +581,7 @@ procedure TForm1.btBtnGerarClick(Sender: TObject);
               edtTelefone.Text  := gerarTelefone();
               edtUF.Text        := gerarUF();
               edtDDD.Text       := gerarDDD();
+              edtMatricula.Text      := gerarMatricula();
           end
       end;
   end;
@@ -549,6 +596,12 @@ procedure TForm1.btBtnCopiaCPFClick(Sender: TObject);
   begin
     edtCPF.SelectAll;
     edtCPF.CopyToClipboard;
+  end;
+
+procedure TForm1.btBtnCopiaMatriculaClick(Sender: TObject);
+  begin
+    edtMatricula.SelectAll;
+    edtMatricula.CopyToClipboard;
   end;
 
 procedure TForm1.btBtnCopiaNascimentoClick(Sender: TObject);
