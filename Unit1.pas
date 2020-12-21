@@ -5,11 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.Math, DateUtils,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, Vcl.Buttons;
 
 type
   TForm1 = class(TForm)
-    btnGerar: TButton;
     edtCPF: TEdit;
     edtCNS: TEdit;
     edtDataNasc: TEdit;
@@ -36,7 +35,29 @@ type
     rdgpSexo: TRadioGroup;
     edtTituloEleitor: TEdit;
     Label12: TLabel;
-    procedure btnGerarClick(Sender: TObject);
+    btBtnSair: TBitBtn;
+    btBtnGerar: TBitBtn;
+    btBtnCopiaNome: TBitBtn;
+    btBtnCopiaNomeMae: TBitBtn;
+    btBtnCopiaNascimento: TBitBtn;
+    btBtnCopiaNomePai: TBitBtn;
+    btBtnCopiaCPF: TBitBtn;
+    btBtnCopiaCNS: TBitBtn;
+    btBtnCopiaTelefone: TBitBtn;
+    btBtnCopiaRG: TBitBtn;
+    btBtnCopiaTitEleitor: TBitBtn;
+    lblNaturalidade: TLabel;
+    procedure Click(Sender: TObject);
+    procedure btBtnCopiaNascimentoClick(Sender: TObject);
+    procedure btBtnCopiaNomeMaeClick(Sender: TObject);
+    procedure btBtnCopiaNomePaiClick(Sender: TObject);
+    procedure btBtnCopiaCPFClick(Sender: TObject);
+    procedure btBtnCopiaCNSClick(Sender: TObject);
+    procedure btBtnCopiaRGClick(Sender: TObject);
+    procedure btBtnCopiaTelefoneClick(Sender: TObject);
+    procedure btBtnCopiaTitEleitorClick(Sender: TObject);
+    procedure btBtnSairClick(Sender: TObject);
+    procedure btBtnGerarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -472,7 +493,7 @@ function gerarDDD(): string;
   end;
 
 
-procedure TForm1.btnGerarClick(Sender: TObject);
+procedure TForm1.btBtnGerarClick(Sender: TObject);
   begin
     if geradorCPF (True) <> '' then
       begin
@@ -516,6 +537,65 @@ procedure TForm1.btnGerarClick(Sender: TObject);
               edtDDD.Text       := gerarDDD();
           end
       end;
+  end;
+
+procedure TForm1.btBtnCopiaCNSClick(Sender: TObject);
+  begin
+    edtCNS.SelectAll;
+    edtCNS.CopyToClipboard;
+  end;
+
+procedure TForm1.btBtnCopiaCPFClick(Sender: TObject);
+  begin
+    edtCPF.SelectAll;
+    edtCPF.CopyToClipboard;
+  end;
+
+procedure TForm1.btBtnCopiaNascimentoClick(Sender: TObject);
+  begin
+    edtDataNasc.SelectAll;
+    edtDataNasc.CopyToClipboard;
+  end;
+
+procedure TForm1.Click(Sender: TObject);
+  begin
+    edtNomeCompleto.SelectAll;
+    edtNomeCompleto.CopyToClipboard;
+  end;
+
+procedure TForm1.btBtnCopiaNomeMaeClick(Sender: TObject);
+  begin
+    edtNomeMae.SelectAll;
+    edtNomeMae.CopyToClipboard;
+  end;
+
+procedure TForm1.btBtnCopiaNomePaiClick(Sender: TObject);
+  begin
+    edtNomePai.SelectAll;
+    edtNomePai.CopyToClipboard;
+  end;
+
+procedure TForm1.btBtnCopiaRGClick(Sender: TObject);
+  begin
+    edtRG.SelectAll;
+    edtRG.CopyToClipboard;
+  end;
+
+procedure TForm1.btBtnCopiaTelefoneClick(Sender: TObject);
+  begin
+    edtTelefone.SelectAll;
+    edtTelefone.CopyToClipboard;
+  end;
+
+procedure TForm1.btBtnCopiaTitEleitorClick(Sender: TObject);
+  begin
+    edtTituloEleitor.SelectAll;
+    edtTituloEleitor.CopyToClipboard;
+  end;
+
+procedure TForm1.btBtnSairClick(Sender: TObject);
+  begin
+    Close;
   end;
 
 end.
